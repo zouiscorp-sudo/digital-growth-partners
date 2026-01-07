@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type Category = "all" | "seo" | "social" | "ads" | "web";
 
@@ -105,13 +106,13 @@ const Portfolio = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 gradient-hero">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4 text-center">
-          <span className="text-primary-foreground/80 font-semibold text-sm uppercase tracking-wider">Our Work</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-4 mb-6">
+          <span className="text-secondary-foreground/80 font-semibold text-sm uppercase tracking-wider">Our Work</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mt-4 mb-6">
             Case <span className="text-accent">Studies</span>
           </h1>
-          <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
+          <p className="text-secondary-foreground/80 text-lg max-w-2xl mx-auto">
             Real results for real businesses. Explore how we've helped our clients 
             achieve their digital marketing goals.
           </p>
@@ -127,7 +128,7 @@ const Portfolio = () => {
               <Button
                 key={category.id}
                 variant={activeCategory === category.id ? "default" : "outline"}
-                className={activeCategory === category.id ? "gradient-bg" : ""}
+                className={activeCategory === category.id ? "bg-primary" : ""}
                 onClick={() => setActiveCategory(category.id)}
               >
                 {category.name}
@@ -145,7 +146,7 @@ const Portfolio = () => {
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div className="absolute inset-0 bg-secondary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <Button size="sm" variant="secondary" className="gap-2">
                       View Details <ExternalLink className="w-4 h-4" />
                     </Button>
@@ -184,8 +185,8 @@ const Portfolio = () => {
           <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
             Let's discuss how we can help achieve similar results for your business.
           </p>
-          <Button size="lg" className="gradient-bg hover:opacity-90" asChild>
-            <a href="/contact">Start Your Project</a>
+          <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+            <Link to="/contact">Start Your Project</Link>
           </Button>
         </div>
       </section>

@@ -45,7 +45,7 @@ export const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="gradient-bg hover:opacity-90">
+            <Button asChild className="bg-primary hover:bg-primary/90">
               <Link to="/contact">Get Started</Link>
             </Button>
           </div>
@@ -78,7 +78,7 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Button asChild className="gradient-bg hover:opacity-90 mt-2">
+              <Button asChild className="bg-primary hover:bg-primary/90 mt-2">
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
                   Get Started
                 </Link>

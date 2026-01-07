@@ -95,13 +95,13 @@ const Pricing = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 gradient-hero">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4 text-center">
-          <span className="text-primary-foreground/80 font-semibold text-sm uppercase tracking-wider">Pricing</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-4 mb-6">
+          <span className="text-secondary-foreground/80 font-semibold text-sm uppercase tracking-wider">Pricing</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mt-4 mb-6">
             Simple, Transparent <span className="text-accent">Pricing</span>
           </h1>
-          <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
+          <p className="text-secondary-foreground/80 text-lg max-w-2xl mx-auto">
             Choose a plan that fits your business needs. All plans include dedicated support 
             and transparent monthly reporting.
           </p>
@@ -148,7 +148,7 @@ const Pricing = () => {
                     ))}
                   </ul>
                   <Button 
-                    className={`w-full ${plan.popular ? 'gradient-bg hover:opacity-90' : ''}`}
+                    className={`w-full ${plan.popular ? 'bg-primary hover:bg-primary/90' : ''}`}
                     variant={plan.popular ? 'default' : 'outline'}
                     size="lg"
                     asChild
@@ -172,7 +172,7 @@ const Pricing = () => {
             <p className="text-muted-foreground mb-6">
               Every business is unique. Let's create a custom package tailored specifically to your goals and budget.
             </p>
-            <Button size="lg" className="gradient-bg hover:opacity-90" asChild>
+            <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
               <Link to="/contact">Request Custom Quote</Link>
             </Button>
           </div>

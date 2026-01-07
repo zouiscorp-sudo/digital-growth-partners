@@ -107,13 +107,13 @@ const Services = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 gradient-hero">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4 text-center">
-          <span className="text-primary-foreground/80 font-semibold text-sm uppercase tracking-wider">What We Do</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-4 mb-6">
+          <span className="text-secondary-foreground/80 font-semibold text-sm uppercase tracking-wider">What We Do</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mt-4 mb-6">
             Our <span className="text-accent">Services</span>
           </h1>
-          <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
+          <p className="text-secondary-foreground/80 text-lg max-w-2xl mx-auto">
             Comprehensive digital marketing solutions designed to help your business 
             grow online and achieve measurable results.
           </p>
@@ -139,7 +139,7 @@ const Services = () => {
                   <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                     {service.description}
                   </p>
-                  <Button size="lg" className="gradient-bg hover:opacity-90" asChild>
+                  <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
                     <Link to="/contact">
                       Get Started <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
@@ -165,7 +165,7 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 gradient-bg">
+      <section className="py-24 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
             Not Sure Which Service You Need?

@@ -56,7 +56,7 @@ export const ServicesOverview = () => {
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Services</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
             Complete Digital Marketing{" "}
-            <span className="gradient-text">Solutions</span>
+            <span className="text-primary">Solutions</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             From SEO to social media, we offer comprehensive digital marketing services 
