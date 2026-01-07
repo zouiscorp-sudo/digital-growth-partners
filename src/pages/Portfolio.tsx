@@ -106,13 +106,14 @@ const Portfolio = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
-          <span className="text-secondary-foreground/80 font-semibold text-sm uppercase tracking-wider">Our Work</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mt-4 mb-6">
-            Case <span className="text-accent">Studies</span>
+      <section className="relative py-24 bg-background overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--primary)/0.1)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary)/0.1)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Work</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-4 mb-6">
+            Case <span className="text-primary">Studies</span>
           </h1>
-          <p className="text-secondary-foreground/80 text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Real results for real businesses. Explore how we've helped our clients 
             achieve their digital marketing goals.
           </p>
