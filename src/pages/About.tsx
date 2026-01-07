@@ -54,13 +54,13 @@ const About = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 gradient-hero">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4 text-center">
-          <span className="text-primary-foreground/80 font-semibold text-sm uppercase tracking-wider">About Us</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-4 mb-6">
+          <span className="text-secondary-foreground/80 font-semibold text-sm uppercase tracking-wider">About Us</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mt-4 mb-6">
             We Are <span className="text-accent">Attur Media Crew</span>
           </h1>
-          <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
+          <p className="text-secondary-foreground/80 text-lg max-w-2xl mx-auto">
             A passionate team of digital marketing experts dedicated to helping 
             businesses thrive in the digital world.
           </p>
@@ -213,7 +213,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 gradient-bg">
+      <section className="py-24 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
             Ready to Work With Us?

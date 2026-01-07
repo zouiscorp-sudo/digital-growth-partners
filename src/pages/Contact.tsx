@@ -16,6 +16,7 @@ import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { Link } from "react-router-dom";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -143,21 +144,21 @@ const Contact = () => {
   if (isSubmitted) {
     return (
       <Layout>
-        <section className="py-24 gradient-hero min-h-[80vh] flex items-center">
+        <section className="py-24 bg-secondary min-h-[80vh] flex items-center">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-xl mx-auto">
               <div className="w-20 h-20 rounded-full bg-success/20 flex items-center justify-center mx-auto mb-8">
                 <CheckCircle className="w-10 h-10 text-success" />
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-secondary-foreground mb-4">
                 Thank You for Contacting Us!
               </h1>
-              <p className="text-primary-foreground/80 text-lg mb-8">
+              <p className="text-secondary-foreground/80 text-lg mb-8">
                 We've received your message and will get back to you within 24 hours. 
                 In the meantime, feel free to explore our services.
               </p>
               <Button size="lg" className="bg-accent hover:bg-accent/90" asChild>
-                <a href="/services">Explore Our Services</a>
+                <Link to="/services">Explore Our Services</Link>
               </Button>
             </div>
           </div>
@@ -169,13 +170,13 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 gradient-hero">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4 text-center">
-          <span className="text-primary-foreground/80 font-semibold text-sm uppercase tracking-wider">Contact Us</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-4 mb-6">
+          <span className="text-secondary-foreground/80 font-semibold text-sm uppercase tracking-wider">Contact Us</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mt-4 mb-6">
             Let's <span className="text-accent">Talk</span>
           </h1>
-          <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
+          <p className="text-secondary-foreground/80 text-lg max-w-2xl mx-auto">
             Ready to grow your business online? Fill out the form below and we'll 
             get back to you within 24 hours with a free consultation.
           </p>
@@ -278,7 +279,7 @@ const Contact = () => {
                     <Button 
                       type="submit" 
                       size="lg" 
-                      className="w-full gradient-bg hover:opacity-90"
+                      className="w-full bg-primary hover:bg-primary/90"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
