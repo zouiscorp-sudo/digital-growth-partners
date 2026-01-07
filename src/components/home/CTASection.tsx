@@ -21,7 +21,7 @@ export const CTASection = () => {
             and custom strategy tailored to your goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-lg" asChild>
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg" asChild>
               <Link to="/contact">
                 Get Free Quote
                 <ArrowRight className="ml-2 h-5 w-5" />
