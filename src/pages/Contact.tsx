@@ -158,7 +158,7 @@ const Contact = () => {
                 We've received your message and will get back to you within 24 hours. 
                 In the meantime, feel free to explore our services.
               </p>
-              <Button size="lg" className="bg-accent hover:bg-accent/90" asChild>
+              <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
                 <Link to="/services">Explore Our Services</Link>
               </Button>
             </div>

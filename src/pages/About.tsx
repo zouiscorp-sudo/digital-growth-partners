@@ -222,7 +222,7 @@ const About = () => {
           <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
             Let's discuss how we can help your business grow online.
           </p>
-          <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8" asChild>
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8" asChild>
             <Link to="/contact">
               Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

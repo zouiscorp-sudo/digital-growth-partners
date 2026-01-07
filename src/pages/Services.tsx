@@ -175,7 +175,7 @@ const Services = () => {
             Book a free consultation and we'll analyze your business needs to recommend 
             the best digital marketing strategy for you.
           </p>
-          <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8" asChild>
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8" asChild>
             <Link to="/contact">Book Free Consultation</Link>
           </Button>
         </div>
