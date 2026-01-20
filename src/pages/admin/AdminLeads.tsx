@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Trash2, Loader2, Mail, Phone, Calendar, LogOut, LayoutDashboard } from 'lucide-react';
+import { ArrowLeft, Trash2, Loader2, Mail, Phone, Calendar, LogOut, LayoutDashboard, Download } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -71,6 +71,47 @@ export default function AdminLeads() {
     navigate('/admin/login');
   };
 
+  const exportToCSV = () => {
+    if (!leads || leads.length === 0) {
+      toast({
+        title: 'No data to export',
+        description: 'There are no leads to export.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    const headers = ['Name', 'Email', 'Phone', 'Service', 'Budget', 'Message', 'Date'];
+    const csvRows = [
+      headers.join(','),
+      ...leads.map(lead => [
+        `"${lead.name.replace(/"/g, '""')}"`,
+        `"${lead.email.replace(/"/g, '""')}"`,
+        `"${(lead.phone || '').replace(/"/g, '""')}"`,
+        `"${lead.service.replace(/"/g, '""')}"`,
+        `"${(lead.budget || '').replace(/"/g, '""')}"`,
+        `"${lead.message.replace(/"/g, '""')}"`,
+        `"${format(new Date(lead.created_at), 'yyyy-MM-dd HH:mm:ss')}"`
+      ].join(','))
+    ];
+
+    const csvContent = csvRows.join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `leads-export-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: 'Export successful',
+      description: `Exported ${leads.length} leads to CSV.`,
+    });
+  };
+
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -109,8 +150,16 @@ export default function AdminLeads() {
 
       <main className="container mx-auto px-4 py-8">
         <Card>
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Customer Leads</CardTitle>
+            <Button 
+              variant="outline" 
+              onClick={exportToCSV}
+              disabled={!leads || leads.length === 0}
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Export CSV
+            </Button>
           </CardHeader>
           <CardContent>
             {isLoading ? (
