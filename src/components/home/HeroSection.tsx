@@ -71,12 +71,12 @@ export const HeroSection = () => {
           </div>
 
           {/* Right Content - Visual Area */}
-          <div className="relative flex items-center justify-center min-h-[300px] lg:min-h-[500px] mt-8 lg:mt-0">
+          <div className="relative flex items-center justify-center min-h-[350px] lg:min-h-[500px] mt-8 lg:mt-0">
             {/* Large Background Circle */}
-            <div className="absolute w-[250px] h-[250px] lg:w-[380px] lg:h-[380px] rounded-full bg-primary/10" />
+            <div className="absolute w-[220px] h-[220px] lg:w-[380px] lg:h-[380px] rounded-full bg-primary/10" />
             
             {/* Team Image inside circle */}
-            <div className="relative w-[200px] h-[200px] lg:w-[320px] lg:h-[320px] rounded-full overflow-hidden bg-primary/5 z-10">
+            <div className="relative w-[180px] h-[180px] lg:w-[320px] lg:h-[320px] rounded-full overflow-hidden bg-primary/5 z-10">
               <img 
                 src={heroTeam} 
                 alt="Digital Marketing Team" 
@@ -84,9 +84,9 @@ export const HeroSection = () => {
               />
             </div>
 
-            {/* Floating Stat Cards - positioned outside the circle - hidden on mobile, shown on lg */}
+            {/* Floating Stat Cards - responsive positioning */}
             {/* Top Left Card */}
-            <div className="absolute -left-4 top-8 z-20 hidden lg:block">
+            <div className="absolute -left-2 lg:-left-4 top-0 lg:top-8 z-20 scale-75 lg:scale-100 origin-top-left">
               <StatCard 
                 icon={Users} 
                 value="50+" 
@@ -97,7 +97,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Top Right Card */}
-            <div className="absolute -right-4 top-12 z-20 hidden lg:block">
+            <div className="absolute -right-2 lg:-right-4 top-4 lg:top-12 z-20 scale-75 lg:scale-100 origin-top-right">
               <StatCard 
                 icon={Briefcase} 
                 value="200+" 
@@ -108,7 +108,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Bottom Left Card */}
-            <div className="absolute left-0 bottom-16 z-20 hidden lg:block">
+            <div className="absolute -left-2 lg:left-0 bottom-8 lg:bottom-16 z-20 scale-75 lg:scale-100 origin-bottom-left">
               <StatCard 
                 icon={Award} 
                 value="3+" 
@@ -119,7 +119,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Bottom Right Card */}
-            <div className="absolute right-0 bottom-24 z-20 hidden lg:block">
+            <div className="absolute -right-2 lg:right-0 bottom-16 lg:bottom-24 z-20 scale-75 lg:scale-100 origin-bottom-right">
               <StatCard 
                 icon={TrendingUp} 
                 value="100%" 
@@ -131,45 +131,6 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* Mobile Stats - Visible on smaller screens */}
-        <div className="grid grid-cols-2 gap-4 mt-12 lg:hidden opacity-0 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-          <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow-sm border border-border">
-            <div className="w-10 h-10 rounded-full bg-info flex items-center justify-center">
-              <Users className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <p className="text-lg font-bold">50+</p>
-              <p className="text-xs text-muted-foreground">Clients</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow-sm border border-border">
-            <div className="w-10 h-10 rounded-full bg-warning flex items-center justify-center">
-              <Briefcase className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <p className="text-lg font-bold">200+</p>
-              <p className="text-xs text-muted-foreground">Projects</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow-sm border border-border">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <Award className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <p className="text-lg font-bold">3+</p>
-              <p className="text-xs text-muted-foreground">Years</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow-sm border border-border">
-            <div className="w-10 h-10 rounded-full bg-success flex items-center justify-center">
-              <TrendingUp className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <p className="text-lg font-bold">100%</p>
-              <p className="text-xs text-muted-foreground">Satisfaction</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

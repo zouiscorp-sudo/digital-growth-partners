@@ -22,8 +22,9 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Attur Media Crew" className="h-12 w-auto" />
+          <Link to="/" className="flex items-center gap-2">
+            <img src={logo} alt="Attur Media Crew" className="h-10 w-auto" />
+            <span className="font-bold text-lg text-foreground">Attur Media Crew</span>
           </Link>
 
           {/* Desktop Navigation */}
