@@ -47,14 +47,14 @@ const About = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-24 bg-background overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--primary)/0.1)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary)/0.1)_1px,transparent_1px)] bg-[size:60px_60px]" />
         <div className="container mx-auto px-4 text-center relative z-10">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">About Us</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-4 mb-6">
+          <span className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider">About Us</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">
             We Are <span className="text-primary">Attur Media Crew</span>
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-2">
             A passionate team of digital marketing experts dedicated to helping 
             businesses thrive in the digital world.
           </p>
@@ -62,15 +62,15 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Story</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="text-center lg:text-left">
+              <span className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider">Our Story</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 md:mt-4 mb-4 md:mb-6">
                 From Attur to the Digital World
               </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-3 md:space-y-4 text-muted-foreground text-sm md:text-base leading-relaxed">
                 <p>
                   Founded in the heart of Attur, Salem District, we started with a simple mission: 
                   to help local businesses compete in the digital age. What began as a small team 
@@ -88,26 +88,26 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
               <Card className="border-0 shadow-lg bg-primary text-primary-foreground">
-                <CardContent className="p-8 text-center">
-                  <Users className="w-10 h-10 mx-auto mb-4" />
-                  <div className="text-4xl font-bold mb-2">50+</div>
-                  <p className="text-primary-foreground/80">Happy Clients</p>
+                <CardContent className="p-6 md:p-8 text-center">
+                  <Users className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 md:mb-4" />
+                  <div className="text-3xl md:text-4xl font-bold mb-1 md:mb-2">50+</div>
+                  <p className="text-primary-foreground/80 text-sm">Happy Clients</p>
                 </CardContent>
               </Card>
               <Card className="border-0 shadow-lg bg-accent text-accent-foreground">
-                <CardContent className="p-8 text-center">
-                  <Award className="w-10 h-10 mx-auto mb-4" />
-                  <div className="text-4xl font-bold mb-2">200+</div>
-                  <p className="text-accent-foreground/80">Projects Completed</p>
+                <CardContent className="p-6 md:p-8 text-center">
+                  <Award className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 md:mb-4" />
+                  <div className="text-3xl md:text-4xl font-bold mb-1 md:mb-2">200+</div>
+                  <p className="text-accent-foreground/80 text-sm">Projects Completed</p>
                 </CardContent>
               </Card>
               <Card className="border-0 shadow-lg bg-success text-success-foreground col-span-2">
-                <CardContent className="p-8 text-center">
-                  <Target className="w-10 h-10 mx-auto mb-4" />
-                  <div className="text-4xl font-bold mb-2">95%</div>
-                  <p className="text-success-foreground/80">Client Retention Rate</p>
+                <CardContent className="p-6 md:p-8 text-center">
+                  <Target className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 md:mb-4" />
+                  <div className="text-3xl md:text-4xl font-bold mb-1 md:mb-2">95%</div>
+                  <p className="text-success-foreground/80 text-sm">Client Retention Rate</p>
                 </CardContent>
               </Card>
             </div>
@@ -116,16 +116,16 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-6 md:gap-12 max-w-5xl mx-auto">
             <Card className="border-0 shadow-lg">
-              <CardContent className="p-10">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                  <Target className="w-7 h-7 text-primary" />
+              <CardContent className="p-6 md:p-10">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 md:mb-6">
+                  <Target className="w-6 h-6 md:w-7 md:h-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Our Mission</h3>
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                   To empower businesses of all sizes with cutting-edge digital marketing 
                   strategies that drive growth, build brand awareness, and deliver 
                   measurable results in the ever-evolving digital landscape.
@@ -133,12 +133,12 @@ const About = () => {
               </CardContent>
             </Card>
             <Card className="border-0 shadow-lg">
-              <CardContent className="p-10">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                  <Eye className="w-7 h-7 text-accent" />
+              <CardContent className="p-6 md:p-10">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4 md:mb-6">
+                  <Eye className="w-6 h-6 md:w-7 md:h-7 text-accent" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Our Vision</h3>
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                   To become the most trusted digital marketing partner for businesses 
                   across India, known for our integrity, innovation, and commitment 
                   to delivering exceptional value to our clients.
@@ -150,23 +150,23 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Values</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+            <span className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider">Our Values</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 md:mt-4 mb-4 md:mb-6">
               What Drives Us Forward
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {values.map((value) => (
               <Card key={value.title} className="border-0 shadow-lg hover-lift">
-                <CardContent className="p-8 text-center">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 mx-auto">
-                    <value.icon className="w-7 h-7 text-primary" />
+                <CardContent className="p-4 md:p-8 text-center">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                    <value.icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+                  <h3 className="text-base md:text-xl font-semibold mb-2 md:mb-3">{value.title}</h3>
+                  <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -175,14 +175,14 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Team</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+            <span className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider">Our Team</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 md:mt-4 mb-4 md:mb-6">
               Meet the Experts Behind Your Success
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm md:text-base">
               A dedicated team of professionals passionate about digital marketing.
             </p>
           </div>
@@ -196,7 +196,7 @@ const About = () => {
               Error loading team members. Please try again later.
             </div>
           ) : teamMembers && teamMembers.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto">
               {teamMembers.map((member) => (
                 <Card key={member.id} className="border-0 shadow-lg overflow-hidden group">
                   <div className="aspect-square overflow-hidden bg-muted">
@@ -208,15 +208,15 @@ const About = () => {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                        <Users className="w-16 h-16" />
+                        <Users className="w-12 h-12 md:w-16 md:h-16" />
                       </div>
                     )}
                   </div>
-                  <CardContent className="p-6 text-center">
-                    <h3 className="font-semibold text-lg">{member.name}</h3>
-                    <p className="text-muted-foreground text-sm">{member.position}</p>
+                  <CardContent className="p-4 md:p-6 text-center">
+                    <h3 className="font-semibold text-sm md:text-lg">{member.name}</h3>
+                    <p className="text-muted-foreground text-xs md:text-sm">{member.position}</p>
                     {member.bio && (
-                      <p className="text-muted-foreground text-xs mt-2 line-clamp-2">{member.bio}</p>
+                      <p className="text-muted-foreground text-xs mt-2 line-clamp-2 hidden md:block">{member.bio}</p>
                     )}
                   </CardContent>
                 </Card>
@@ -231,15 +231,15 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary">
+      <section className="py-16 md:py-24 bg-primary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-foreground mb-4 md:mb-6">
             Ready to Work With Us?
           </h2>
-          <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-primary-foreground/80 text-base md:text-lg mb-6 md:mb-8 max-w-2xl mx-auto px-2">
             Let's discuss how we can help your business grow online.
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8" asChild>
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 md:px-8" asChild>
             <Link to="/contact">
               Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

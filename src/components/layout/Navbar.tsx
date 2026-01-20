@@ -20,15 +20,19 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Attur Media Crew" className="h-10 w-auto" />
-            <span className="hidden sm:inline font-bold text-lg text-foreground">Attur Media Crew</span>
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo - Left */}
+          <Link to="/" className="flex items-center flex-shrink-0">
+            <img src={logo} alt="Attur Media Crew" className="h-8 md:h-10 w-auto" />
           </Link>
 
+          {/* Company Name - Center (visible on mobile) */}
+          <div className="absolute left-1/2 -translate-x-1/2 md:hidden">
+            <span className="font-bold text-sm text-foreground whitespace-nowrap">Attur Media Crew</span>
+          </div>
+
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -44,7 +48,7 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button - Desktop */}
           <div className="hidden md:block">
             <Button asChild className="bg-primary hover:bg-primary/90">
               <Link to="/contact">Get Started</Link>

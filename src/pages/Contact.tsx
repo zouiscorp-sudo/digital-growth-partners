@@ -171,14 +171,14 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-24 bg-background overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--primary)/0.1)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary)/0.1)_1px,transparent_1px)] bg-[size:60px_60px]" />
         <div className="container mx-auto px-4 text-center relative z-10">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Contact Us</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-4 mb-6">
+          <span className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider">Contact Us</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">
             Let's <span className="text-primary">Talk</span>
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-2">
             Ready to grow your business online? Fill out the form below and we'll 
             get back to you within 24 hours with a free consultation.
           </p>
@@ -186,17 +186,17 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <Card className="border-0 shadow-xl">
-                <CardContent className="p-8 md:p-10">
-                  <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
+                <CardContent className="p-6 md:p-8 lg:p-10">
+                  <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Send Us a Message</h2>
+                  <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+                      <div className="space-y-1.5 md:space-y-2">
                         <Label htmlFor="name">Full Name *</Label>
                         <Input
                           id="name"
@@ -205,9 +205,9 @@ const Contact = () => {
                           onChange={(e) => handleChange("name", e.target.value)}
                           className={errors.name ? "border-destructive" : ""}
                         />
-                        {errors.name && <p className="text-destructive text-sm">{errors.name}</p>}
+                        {errors.name && <p className="text-destructive text-xs md:text-sm">{errors.name}</p>}
                       </div>
-                      <div className="space-y-2">
+                      <div className="space-y-1.5 md:space-y-2">
                         <Label htmlFor="email">Email Address *</Label>
                         <Input
                           id="email"
@@ -217,13 +217,13 @@ const Contact = () => {
                           onChange={(e) => handleChange("email", e.target.value)}
                           className={errors.email ? "border-destructive" : ""}
                         />
-                        {errors.email && <p className="text-destructive text-sm">{errors.email}</p>}
+                        {errors.email && <p className="text-destructive text-xs md:text-sm">{errors.email}</p>}
                       </div>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number</Label>
+                    <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+                      <div className="space-y-1.5 md:space-y-2">
+                        <Label htmlFor="phone" className="text-sm">Phone Number</Label>
                         <Input
                           id="phone"
                           placeholder="+91 98765 43210"
@@ -231,8 +231,8 @@ const Contact = () => {
                           onChange={(e) => handleChange("phone", e.target.value)}
                         />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="service">Service Interested In *</Label>
+                      <div className="space-y-1.5 md:space-y-2">
+                        <Label htmlFor="service" className="text-sm">Service Interested In *</Label>
                         <Select value={formData.service} onValueChange={(value) => handleChange("service", value)}>
                           <SelectTrigger className={errors.service ? "border-destructive" : ""}>
                             <SelectValue placeholder="Select a service" />
@@ -245,12 +245,12 @@ const Contact = () => {
                             ))}
                           </SelectContent>
                         </Select>
-                        {errors.service && <p className="text-destructive text-sm">{errors.service}</p>}
+                        {errors.service && <p className="text-destructive text-xs md:text-sm">{errors.service}</p>}
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="budget">Monthly Budget (Optional)</Label>
+                    <div className="space-y-1.5 md:space-y-2">
+                      <Label htmlFor="budget" className="text-sm">Monthly Budget (Optional)</Label>
                       <Select value={formData.budget} onValueChange={(value) => handleChange("budget", value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select your budget range" />
@@ -265,17 +265,17 @@ const Contact = () => {
                       </Select>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Your Message *</Label>
+                    <div className="space-y-1.5 md:space-y-2">
+                      <Label htmlFor="message" className="text-sm">Your Message *</Label>
                       <Textarea
                         id="message"
                         placeholder="Tell us about your project, goals, and any specific requirements..."
                         rows={5}
                         value={formData.message}
                         onChange={(e) => handleChange("message", e.target.value)}
-                        className={errors.message ? "border-destructive" : ""}
+                        className={`min-h-[100px] md:min-h-[120px] ${errors.message ? "border-destructive" : ""}`}
                       />
-                      {errors.message && <p className="text-destructive text-sm">{errors.message}</p>}
+                      {errors.message && <p className="text-destructive text-xs md:text-sm">{errors.message}</p>}
                     </div>
 
                     <Button 
@@ -298,26 +298,26 @@ const Contact = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold">Get in Touch</h2>
-              <p className="text-muted-foreground">
+            <div className="space-y-4 md:space-y-6">
+              <h2 className="text-xl md:text-2xl font-bold">Get in Touch</h2>
+              <p className="text-muted-foreground text-sm md:text-base">
                 Have questions? We'd love to hear from you. Reach out through any of the channels below.
               </p>
-              <div className="space-y-4">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3 md:gap-4">
                 {contactInfo.map((info) => (
                   <Card key={info.title} className="border-0 shadow-lg">
-                    <CardContent className="p-6 flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <info.icon className="w-6 h-6 text-primary" />
+                    <CardContent className="p-4 md:p-6 flex items-start gap-3 md:gap-4">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <info.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-1">{info.title}</h3>
+                        <h3 className="font-semibold text-sm md:text-base mb-0.5 md:mb-1">{info.title}</h3>
                         {info.href ? (
-                          <a href={info.href} className="text-muted-foreground hover:text-primary transition-colors">
+                          <a href={info.href} className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm">
                             {info.content}
                           </a>
                         ) : (
-                          <p className="text-muted-foreground">{info.content}</p>
+                          <p className="text-muted-foreground text-xs md:text-sm">{info.content}</p>
                         )}
                       </div>
                     </CardContent>
@@ -327,12 +327,12 @@ const Contact = () => {
 
               {/* WhatsApp CTA */}
               <Card className="border-0 shadow-lg bg-success text-success-foreground">
-                <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold text-lg mb-2">Prefer WhatsApp?</h3>
-                  <p className="text-success-foreground/80 text-sm mb-4">
+                <CardContent className="p-4 md:p-6 text-center">
+                  <h3 className="font-semibold text-base md:text-lg mb-1 md:mb-2">Prefer WhatsApp?</h3>
+                  <p className="text-success-foreground/80 text-xs md:text-sm mb-3 md:mb-4">
                     Chat with us directly for quick responses
                   </p>
-                  <Button variant="secondary" className="w-full" asChild>
+                  <Button variant="secondary" className="w-full text-sm" asChild>
                     <a 
                       href={`https://wa.me/919876543210?text=${encodeURIComponent("Hi! I'm interested in your digital marketing services.")}`}
                       target="_blank"
