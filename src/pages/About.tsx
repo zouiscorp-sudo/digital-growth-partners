@@ -2,7 +2,9 @@ import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Target, Eye, Heart, Zap, Users, Award, ArrowRight } from "lucide-react";
+import { Target, Eye, Heart, Zap, Users, Award, ArrowRight, Loader2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 const values = [
   {
@@ -27,30 +29,21 @@ const values = [
   },
 ];
 
-const team = [
-  {
-    name: "Team Leader",
-    role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-  },
-  {
-    name: "Marketing Head",
-    role: "Digital Marketing Manager",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
-  },
-  {
-    name: "Creative Lead",
-    role: "Creative Director",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-  },
-  {
-    name: "Tech Expert",
-    role: "Web Development Lead",
-    image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=300&h=300&fit=crop&crop=face",
-  },
-];
-
 const About = () => {
+  const { data: teamMembers, isLoading, error } = useQuery({
+    queryKey: ['team-members'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('team_members')
+        .select('*')
+        .eq('is_active', true)
+        .order('display_order', { ascending: true });
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -193,23 +186,47 @@ const About = () => {
               A dedicated team of professionals passionate about digital marketing.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {team.map((member) => (
-              <Card key={member.name} className="border-0 shadow-lg overflow-hidden group">
-                <div className="aspect-square overflow-hidden">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold text-lg">{member.name}</h3>
-                  <p className="text-muted-foreground text-sm">{member.role}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          
+          {isLoading ? (
+            <div className="flex justify-center py-16">
+              <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            </div>
+          ) : error ? (
+            <div className="text-center py-16 text-destructive">
+              Error loading team members. Please try again later.
+            </div>
+          ) : teamMembers && teamMembers.length > 0 ? (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              {teamMembers.map((member) => (
+                <Card key={member.id} className="border-0 shadow-lg overflow-hidden group">
+                  <div className="aspect-square overflow-hidden bg-muted">
+                    {member.photo_url ? (
+                      <img 
+                        src={member.photo_url} 
+                        alt={member.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                        <Users className="w-16 h-16" />
+                      </div>
+                    )}
+                  </div>
+                  <CardContent className="p-6 text-center">
+                    <h3 className="font-semibold text-lg">{member.name}</h3>
+                    <p className="text-muted-foreground text-sm">{member.position}</p>
+                    {member.bio && (
+                      <p className="text-muted-foreground text-xs mt-2 line-clamp-2">{member.bio}</p>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 text-muted-foreground">
+              No team members available at the moment.
+            </div>
+          )}
         </div>
       </section>
 
