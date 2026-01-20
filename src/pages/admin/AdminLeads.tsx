@@ -29,11 +29,11 @@ import {
 } from '@/components/ui/select';
 import { format } from 'date-fns';
 
-type LeadStatus = 'pending' | 'note' | 'process' | 'approve' | 'decline';
+type LeadStatus = 'pending' | 'done' | 'process' | 'approve' | 'decline';
 
 const statusConfig: Record<LeadStatus, { label: string; variant: 'default' | 'secondary' | 'destructive' | 'outline' }> = {
   pending: { label: 'Pending', variant: 'secondary' },
-  note: { label: 'Note', variant: 'outline' },
+  done: { label: 'Done', variant: 'outline' },
   process: { label: 'In Process', variant: 'default' },
   approve: { label: 'Approved', variant: 'default' },
   decline: { label: 'Declined', variant: 'destructive' },
@@ -261,7 +261,7 @@ export default function AdminLeads() {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="pending">Pending</SelectItem>
-                              <SelectItem value="note">Note</SelectItem>
+                              <SelectItem value="done">Done</SelectItem>
                               <SelectItem value="process">In Process</SelectItem>
                               <SelectItem value="approve">Approved</SelectItem>
                               <SelectItem value="decline">Declined</SelectItem>
