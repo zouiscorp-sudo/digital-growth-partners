@@ -28,7 +28,7 @@ export const Navbar = () => {
 
           {/* Company Name - Center (visible on mobile) */}
           <div className="absolute left-1/2 -translate-x-1/2 md:hidden">
-            <span className="font-bold text-sm text-foreground whitespace-nowrap">Attur Media Crew</span>
+            <span className="font-extrabold text-sm text-foreground whitespace-nowrap">Attur Media Crew</span>
           </div>
 
           {/* Desktop Navigation */}
