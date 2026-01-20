@@ -17,6 +17,9 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminLeads from "./pages/admin/AdminLeads";
 import AdminServices from "./pages/admin/AdminServices";
 import AdminReviews from "./pages/admin/AdminReviews";
+import AdminTeam from "./pages/admin/AdminTeam";
+import AdminPricing from "./pages/admin/AdminPricing";
+import AdminPortfolio from "./pages/admin/AdminPortfolio";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +69,30 @@ const App = () => (
               element={
                 <ProtectedRoute requireAdmin>
                   <AdminReviews />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/team"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminTeam />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/pricing"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminPricing />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/portfolio"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminPortfolio />
                 </ProtectedRoute>
               }
             />
