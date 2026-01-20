@@ -50,6 +50,51 @@ export type Database = {
         }
         Relationships: []
       }
+      reviews: {
+        Row: {
+          avatar_url: string | null
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          is_approved: boolean
+          is_featured: boolean
+          name: string
+          position: string | null
+          rating: number
+          review: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          is_approved?: boolean
+          is_featured?: boolean
+          name: string
+          position?: string | null
+          rating: number
+          review: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          is_approved?: boolean
+          is_featured?: boolean
+          name?: string
+          position?: string | null
+          rating?: number
+          review?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       services: {
         Row: {
           color: string
