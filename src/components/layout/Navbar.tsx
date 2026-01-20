@@ -24,7 +24,7 @@ export const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Attur Media Crew" className="h-10 w-auto" />
-            <span className="font-bold text-lg text-foreground">Attur Media Crew</span>
+            <span className="hidden sm:inline font-bold text-lg text-foreground">Attur Media Crew</span>
           </Link>
 
           {/* Desktop Navigation */}
