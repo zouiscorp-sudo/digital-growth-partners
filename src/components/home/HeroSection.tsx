@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Users, Briefcase, Award, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroTeam from "@/assets/hero-team.png";
 
 const StatCard = ({ 
   icon: Icon, 
@@ -33,7 +34,7 @@ export const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center bg-background overflow-hidden">
       {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--muted-foreground)/0.05)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--muted-foreground)/0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--primary)/0.05)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary)/0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -72,7 +73,7 @@ export const HeroSection = () => {
           {/* Right Content - Visual Area */}
           <div className="relative hidden lg:block">
             {/* Large Background Circle */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-primary/15" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-primary/10" />
             
             {/* Floating Stat Cards */}
             <div className="relative z-10">
@@ -98,16 +99,14 @@ export const HeroSection = () => {
                 />
               </div>
 
-              {/* Center Visual Element */}
+              {/* Center Team Image */}
               <div className="flex items-center justify-center h-[400px]">
-                <div className="relative">
-                  {/* Code symbols decoration */}
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-4xl text-muted-foreground/30 font-mono">&lt;/&gt;</span>
-                  
-                  {/* Center Icon */}
-                  <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center">
-                    <TrendingUp className="w-16 h-16 text-primary" />
-                  </div>
+                <div className="relative w-[350px] h-[350px]">
+                  <img 
+                    src={heroTeam} 
+                    alt="Digital Marketing Team" 
+                    className="w-full h-full object-contain rounded-2xl"
+                  />
                 </div>
               </div>
 

@@ -2,7 +2,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link, useNavigate } from 'react-router-dom';
-import { Users, Briefcase, LogOut, LayoutDashboard } from 'lucide-react';
+import { Users, Briefcase, LogOut, LayoutDashboard, Star } from 'lucide-react';
 
 export default function AdminDashboard() {
   const { user, signOut } = useAuth();
@@ -32,7 +32,7 @@ export default function AdminDashboard() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           <Card className="hover-lift cursor-pointer" onClick={() => navigate('/admin/leads')}>
             <CardHeader>
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
@@ -63,6 +63,23 @@ export default function AdminDashboard() {
             <CardContent>
               <Button asChild className="w-full">
                 <Link to="/admin/services">Manage Services</Link>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="hover-lift cursor-pointer" onClick={() => navigate('/admin/reviews')}>
+            <CardHeader>
+              <div className="w-12 h-12 bg-warning/10 rounded-lg flex items-center justify-center mb-4">
+                <Star className="h-6 w-6 text-warning" />
+              </div>
+              <CardTitle>Review Management</CardTitle>
+              <CardDescription>
+                Approve, feature, or remove customer reviews
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild className="w-full">
+                <Link to="/admin/reviews">Manage Reviews</Link>
               </Button>
             </CardContent>
           </Card>
