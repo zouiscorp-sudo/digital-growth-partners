@@ -71,66 +71,62 @@ export const HeroSection = () => {
           </div>
 
           {/* Right Content - Visual Area */}
-          <div className="relative hidden lg:block">
+          <div className="relative hidden lg:flex items-center justify-center min-h-[500px]">
             {/* Large Background Circle */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-primary/10" />
+            <div className="absolute w-[380px] h-[380px] rounded-full bg-primary/10" />
             
-            {/* Floating Stat Cards */}
-            <div className="relative z-10">
-              {/* Top Left Card */}
-              <div className="absolute -left-8 top-4">
-                <StatCard 
-                  icon={Users} 
-                  value="50+" 
-                  label="Happy Clients" 
-                  colorClass="bg-info"
-                  delay={0}
-                />
-              </div>
+            {/* Team Image inside circle */}
+            <div className="relative w-[320px] h-[320px] rounded-full overflow-hidden bg-primary/5 z-10">
+              <img 
+                src={heroTeam} 
+                alt="Digital Marketing Team" 
+                className="w-full h-full object-cover object-center scale-110"
+              />
+            </div>
 
-              {/* Top Right Card */}
-              <div className="absolute right-0 top-8">
-                <StatCard 
-                  icon={Briefcase} 
-                  value="200+" 
-                  label="Projects Done" 
-                  colorClass="bg-warning"
-                  delay={0.5}
-                />
-              </div>
+            {/* Floating Stat Cards - positioned outside the circle */}
+            {/* Top Left Card */}
+            <div className="absolute -left-4 top-8 z-20">
+              <StatCard 
+                icon={Users} 
+                value="50+" 
+                label="Happy Clients" 
+                colorClass="bg-info"
+                delay={0}
+              />
+            </div>
 
-              {/* Center Team Image */}
-              <div className="flex items-center justify-center h-[400px]">
-                <div className="relative w-[350px] h-[350px]">
-                  <img 
-                    src={heroTeam} 
-                    alt="Digital Marketing Team" 
-                    className="w-full h-full object-contain rounded-2xl"
-                  />
-                </div>
-              </div>
+            {/* Top Right Card */}
+            <div className="absolute -right-4 top-12 z-20">
+              <StatCard 
+                icon={Briefcase} 
+                value="200+" 
+                label="Projects Done" 
+                colorClass="bg-warning"
+                delay={0.5}
+              />
+            </div>
 
-              {/* Bottom Left Card */}
-              <div className="absolute left-4 bottom-12">
-                <StatCard 
-                  icon={Award} 
-                  value="3+" 
-                  label="Years Experience" 
-                  colorClass="bg-primary"
-                  delay={1}
-                />
-              </div>
+            {/* Bottom Left Card */}
+            <div className="absolute left-0 bottom-16 z-20">
+              <StatCard 
+                icon={Award} 
+                value="3+" 
+                label="Years Experience" 
+                colorClass="bg-primary"
+                delay={1}
+              />
+            </div>
 
-              {/* Bottom Right Card */}
-              <div className="absolute right-8 bottom-20">
-                <StatCard 
-                  icon={TrendingUp} 
-                  value="100%" 
-                  label="Client Satisfaction" 
-                  colorClass="bg-success"
-                  delay={1.5}
-                />
-              </div>
+            {/* Bottom Right Card */}
+            <div className="absolute right-0 bottom-24 z-20">
+              <StatCard 
+                icon={TrendingUp} 
+                value="100%" 
+                label="Client Satisfaction" 
+                colorClass="bg-success"
+                delay={1.5}
+              />
             </div>
           </div>
         </div>
