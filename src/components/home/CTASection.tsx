@@ -27,7 +27,7 @@ export const CTASection = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 px-8 py-6 text-lg" asChild>
+            <Button size="lg" variant="outline" className="border-primary bg-background text-foreground hover:bg-primary hover:text-primary-foreground px-8 py-6 text-lg" asChild>
               <a href="tel:+919876543210">
                 <Phone className="mr-2 h-5 w-5" />
                 Call Us Now
