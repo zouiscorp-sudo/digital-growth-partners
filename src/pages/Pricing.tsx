@@ -62,14 +62,14 @@ const Pricing = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-24 bg-background overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--primary)/0.1)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary)/0.1)_1px,transparent_1px)] bg-[size:60px_60px]" />
         <div className="container mx-auto px-4 text-center relative z-10">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Pricing</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-4 mb-6">
+          <span className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider">Pricing</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">
             Simple, Transparent <span className="text-primary">Pricing</span>
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-2">
             Choose a plan that fits your business needs. All plans include dedicated support 
             and transparent monthly reporting.
           </p>
@@ -77,7 +77,7 @@ const Pricing = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-24 bg-background -mt-12">
+      <section className="py-16 md:py-24 bg-background -mt-8 md:-mt-12">
         <div className="container mx-auto px-4">
           {isLoading ? (
             <div className="flex justify-center py-16">
@@ -88,13 +88,13 @@ const Pricing = () => {
               Error loading pricing plans. Please try again later.
             </div>
           ) : plans && plans.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
               {plans.map((plan) => {
                 const features = (plan.features as unknown as PlanFeature[]) || [];
                 return (
                   <Card 
                     key={plan.id}
-                    className={`relative border-2 ${plan.is_popular ? 'border-primary shadow-2xl scale-105' : 'border-border shadow-lg'}`}
+                    className={`relative border-2 ${plan.is_popular ? 'border-primary shadow-2xl sm:scale-105' : 'border-border shadow-lg'}`}
                   >
                     {plan.is_popular && (
                       <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -149,11 +149,11 @@ const Pricing = () => {
       </section>
 
       {/* Custom Quote Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-12 md:py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Need a Custom Solution?</h2>
-            <p className="text-muted-foreground mb-6">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4">Need a Custom Solution?</h2>
+            <p className="text-muted-foreground text-sm md:text-base mb-4 md:mb-6 px-2">
               Every business is unique. Let's create a custom package tailored specifically to your goals and budget.
             </p>
             <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
@@ -164,22 +164,22 @@ const Pricing = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <HelpCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <div className="text-center mb-8 md:mb-12">
+              <HelpCircle className="w-10 h-10 md:w-12 md:h-12 text-primary mx-auto mb-3 md:mb-4" />
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
                 Frequently Asked Questions
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-sm md:text-base">
                 Got questions? We've got answers.
               </p>
             </div>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left text-lg font-medium">
+                  <AccordionTrigger className="text-left text-base md:text-lg font-medium">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">

@@ -52,14 +52,14 @@ const Portfolio = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-24 bg-background overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--primary)/0.1)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary)/0.1)_1px,transparent_1px)] bg-[size:60px_60px]" />
         <div className="container mx-auto px-4 text-center relative z-10">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Work</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-4 mb-6">
+          <span className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider">Our Work</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">
             Case <span className="text-primary">Studies</span>
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-2">
             Real results for real businesses. Explore how we've helped our clients 
             achieve their digital marketing goals.
           </p>
@@ -67,7 +67,7 @@ const Portfolio = () => {
       </section>
 
       {/* Filter & Projects */}
-      <section className="py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           {isLoading ? (
             <div className="flex justify-center py-16">
@@ -80,12 +80,13 @@ const Portfolio = () => {
           ) : projects && projects.length > 0 ? (
             <>
               {/* Category Filter */}
-              <div className="flex flex-wrap justify-center gap-3 mb-16">
+              <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-16 px-2">
                 {categories.map((category) => (
                   <Button
                     key={category.id}
                     variant={activeCategory === category.id ? "default" : "outline"}
-                    className={activeCategory === category.id ? "bg-primary" : ""}
+                    size="sm"
+                    className={`text-xs md:text-sm ${activeCategory === category.id ? "bg-primary" : ""}`}
                     onClick={() => setActiveCategory(category.id)}
                   >
                     {category.name}
@@ -94,12 +95,12 @@ const Portfolio = () => {
               </div>
 
               {/* Projects Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                 {filteredProjects.map((project) => {
                   const results = (project.results as unknown as ProjectResult[]) || [];
                   return (
                     <Card key={project.id} className="group overflow-hidden border-0 shadow-lg hover-lift">
-                      <div className="relative h-56 overflow-hidden bg-muted">
+                      <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden bg-muted">
                         {project.image_url ? (
                           <img 
                             src={project.image_url} 
@@ -111,27 +112,27 @@ const Portfolio = () => {
                             No Image
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-secondary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                          <Button size="sm" variant="secondary" className="gap-2">
-                            View Details <ExternalLink className="w-4 h-4" />
+                        <div className="absolute inset-0 bg-secondary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 md:p-6">
+                          <Button size="sm" variant="secondary" className="gap-2 text-xs md:text-sm">
+                            View Details <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
                           </Button>
                         </div>
                       </div>
-                      <CardContent className="p-6">
-                        <span className="text-primary text-sm font-medium">{project.client}</span>
-                        <h3 className="text-xl font-semibold mt-1 mb-3">{project.title}</h3>
-                        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                      <CardContent className="p-4 md:p-6">
+                        <span className="text-primary text-xs md:text-sm font-medium">{project.client}</span>
+                        <h3 className="text-lg md:text-xl font-semibold mt-1 mb-2 md:mb-3">{project.title}</h3>
+                        <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2">
                           {project.description}
                         </p>
                         {results.length > 0 && (
-                          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+                          <div className="grid grid-cols-3 gap-2 md:gap-4 pt-3 md:pt-4 border-t border-border">
                             {results.slice(0, 3).map((result, index) => (
                               <div key={index} className="text-center">
-                                <div className="flex items-center justify-center gap-1 text-success font-bold">
-                                  <TrendingUp className="w-3 h-3" />
+                                <div className="flex items-center justify-center gap-0.5 md:gap-1 text-success font-bold text-xs md:text-sm">
+                                  <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" />
                                   {result.value}
                                 </div>
-                                <p className="text-xs text-muted-foreground mt-1">{result.label}</p>
+                                <p className="text-[10px] md:text-xs text-muted-foreground mt-0.5 md:mt-1">{result.label}</p>
                               </div>
                             ))}
                           </div>
@@ -151,12 +152,12 @@ const Portfolio = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
             Ready to Be Our Next Success Story?
           </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg mb-6 md:mb-8 max-w-2xl mx-auto px-2">
             Let's discuss how we can help achieve similar results for your business.
           </p>
           <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
