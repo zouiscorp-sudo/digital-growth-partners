@@ -71,12 +71,12 @@ export const HeroSection = () => {
           </div>
 
           {/* Right Content - Visual Area */}
-          <div className="relative hidden lg:flex items-center justify-center min-h-[500px]">
+          <div className="relative flex items-center justify-center min-h-[300px] lg:min-h-[500px] mt-8 lg:mt-0">
             {/* Large Background Circle */}
-            <div className="absolute w-[380px] h-[380px] rounded-full bg-primary/10" />
+            <div className="absolute w-[250px] h-[250px] lg:w-[380px] lg:h-[380px] rounded-full bg-primary/10" />
             
             {/* Team Image inside circle */}
-            <div className="relative w-[320px] h-[320px] rounded-full overflow-hidden bg-primary/5 z-10">
+            <div className="relative w-[200px] h-[200px] lg:w-[320px] lg:h-[320px] rounded-full overflow-hidden bg-primary/5 z-10">
               <img 
                 src={heroTeam} 
                 alt="Digital Marketing Team" 
@@ -84,9 +84,9 @@ export const HeroSection = () => {
               />
             </div>
 
-            {/* Floating Stat Cards - positioned outside the circle */}
+            {/* Floating Stat Cards - positioned outside the circle - hidden on mobile, shown on lg */}
             {/* Top Left Card */}
-            <div className="absolute -left-4 top-8 z-20">
+            <div className="absolute -left-4 top-8 z-20 hidden lg:block">
               <StatCard 
                 icon={Users} 
                 value="50+" 
@@ -97,7 +97,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Top Right Card */}
-            <div className="absolute -right-4 top-12 z-20">
+            <div className="absolute -right-4 top-12 z-20 hidden lg:block">
               <StatCard 
                 icon={Briefcase} 
                 value="200+" 
@@ -108,7 +108,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Bottom Left Card */}
-            <div className="absolute left-0 bottom-16 z-20">
+            <div className="absolute left-0 bottom-16 z-20 hidden lg:block">
               <StatCard 
                 icon={Award} 
                 value="3+" 
@@ -119,7 +119,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Bottom Right Card */}
-            <div className="absolute right-0 bottom-24 z-20">
+            <div className="absolute right-0 bottom-24 z-20 hidden lg:block">
               <StatCard 
                 icon={TrendingUp} 
                 value="100%" 
