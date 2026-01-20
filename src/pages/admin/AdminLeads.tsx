@@ -20,7 +20,24 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { format } from 'date-fns';
+
+type LeadStatus = 'pending' | 'note' | 'process' | 'approve' | 'decline';
+
+const statusConfig: Record<LeadStatus, { label: string; variant: 'default' | 'secondary' | 'destructive' | 'outline' }> = {
+  pending: { label: 'Pending', variant: 'secondary' },
+  note: { label: 'Note', variant: 'outline' },
+  process: { label: 'In Process', variant: 'default' },
+  approve: { label: 'Approved', variant: 'default' },
+  decline: { label: 'Declined', variant: 'destructive' },
+};
 
 export default function AdminLeads() {
   const { user, signOut } = useAuth();
@@ -60,10 +77,32 @@ export default function AdminLeads() {
     },
   });
 
+  const statusMutation = useMutation({
+    mutationFn: async ({ id, status }: { id: string; status: LeadStatus }) => {
+      const { error } = await supabase.from('leads').update({ status }).eq('id', id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-leads'] });
+      toast({ title: 'Status updated successfully' });
+    },
+    onError: (error) => {
+      toast({
+        title: 'Error updating status',
+        description: error.message,
+        variant: 'destructive',
+      });
+    },
+  });
+
   const handleDelete = async (id: string) => {
     setDeletingId(id);
     await deleteMutation.mutateAsync(id);
     setDeletingId(null);
+  };
+
+  const handleStatusChange = (id: string, status: LeadStatus) => {
+    statusMutation.mutate({ id, status });
   };
 
   const handleSignOut = async () => {
@@ -176,6 +215,7 @@ export default function AdminLeads() {
                       <TableHead>Service</TableHead>
                       <TableHead>Budget</TableHead>
                       <TableHead>Message</TableHead>
+                      <TableHead>Status</TableHead>
                       <TableHead>Date</TableHead>
                       <TableHead className="w-[80px]">Actions</TableHead>
                     </TableRow>
@@ -206,6 +246,27 @@ export default function AdminLeads() {
                         <TableCell>{lead.budget || 'Not specified'}</TableCell>
                         <TableCell className="max-w-[200px] truncate" title={lead.message}>
                           {lead.message}
+                        </TableCell>
+                        <TableCell>
+                          <Select
+                            value={lead.status}
+                            onValueChange={(value) => handleStatusChange(lead.id, value as LeadStatus)}
+                          >
+                            <SelectTrigger className="w-[130px]">
+                              <SelectValue>
+                                <Badge variant={statusConfig[lead.status as LeadStatus]?.variant || 'secondary'}>
+                                  {statusConfig[lead.status as LeadStatus]?.label || lead.status}
+                                </Badge>
+                              </SelectValue>
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="pending">Pending</SelectItem>
+                              <SelectItem value="note">Note</SelectItem>
+                              <SelectItem value="process">In Process</SelectItem>
+                              <SelectItem value="approve">Approved</SelectItem>
+                              <SelectItem value="decline">Declined</SelectItem>
+                            </SelectContent>
+                          </Select>
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center gap-1 text-sm text-muted-foreground">
