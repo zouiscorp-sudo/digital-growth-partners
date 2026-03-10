@@ -188,89 +188,25 @@ export default function AdminLogin() {
             <Shield className="h-6 w-6 text-primary" />
           </div>
           <CardTitle className="text-2xl">Admin Portal</CardTitle>
-          <CardDescription>
-            {activeTab === 'login'
-              ? 'Enter your credentials to access the dashboard'
-              : signupStep === 'otp'
-                ? 'Enter the verification code sent to your email'
-                : 'Create your admin account'
-            }
-          </CardDescription>
+          <CardDescription>Enter your credentials to access the dashboard</CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs value={activeTab} onValueChange={(v) => { setActiveTab(v); setSignupStep('form'); setOtpCode(''); }}>
-            <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="login">Login</TabsTrigger>
-              <TabsTrigger value="signup">Sign Up</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="login">
-              <form onSubmit={handleLogin} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="login-email">Email</Label>
-                  <Input id="login-email" type="email" placeholder="admin@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="login-password">Password</Label>
-                  <Input id="login-password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
-                </div>
-                <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Signing in...</> : 'Sign In'}
-                </Button>
-                <Button type="button" variant="link" className="w-full text-sm text-muted-foreground" onClick={() => setShowForgotPassword(true)}>
-                  Forgot your password?
-                </Button>
-              </form>
-            </TabsContent>
-
-            <TabsContent value="signup">
-              {signupStep === 'form' ? (
-                <form onSubmit={handleSignup} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-email">Email</Label>
-                    <Input id="signup-email" type="email" placeholder="admin@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-password">Password</Label>
-                    <Input id="signup-password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="new-password" />
-                  </div>
-                  <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Creating account...</> : 'Create Account'}
-                  </Button>
-                  <p className="text-xs text-center text-muted-foreground">
-                    A verification code will be sent to your email.
-                  </p>
-                </form>
-              ) : (
-                <form onSubmit={handleVerifyOtp} className="space-y-4">
-                  <p className="text-sm text-center text-muted-foreground mb-2">
-                    Code sent to <span className="font-medium text-foreground">{signupEmail}</span>
-                  </p>
-                  <div className="flex justify-center">
-                    <InputOTP maxLength={6} value={otpCode} onChange={setOtpCode}>
-                      <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
-                      </InputOTPGroup>
-                    </InputOTP>
-                  </div>
-                  <Button type="submit" className="w-full" disabled={isLoading || otpCode.length !== 6}>
-                    {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Verifying...</> : 'Verify & Sign In'}
-                  </Button>
-                  <Button type="button" variant="ghost" className="w-full text-sm" onClick={handleResendOtp} disabled={isLoading}>
-                    Resend Code
-                  </Button>
-                  <Button type="button" variant="link" className="w-full text-sm text-muted-foreground" onClick={() => { setSignupStep('form'); setOtpCode(''); }}>
-                    ← Back
-                  </Button>
-                </form>
-              )}
-            </TabsContent>
-          </Tabs>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="login-email">Email</Label>
+              <Input id="login-email" type="email" placeholder="admin@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="login-password">Password</Label>
+              <Input id="login-password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
+            </div>
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Signing in...</> : 'Sign In'}
+            </Button>
+            <Button type="button" variant="link" className="w-full text-sm text-muted-foreground" onClick={() => setShowForgotPassword(true)}>
+              Forgot your password?
+            </Button>
+          </form>
         </CardContent>
       </Card>
     </div>
