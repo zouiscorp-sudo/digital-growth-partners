@@ -50,58 +50,6 @@ export default function AdminLogin() {
     setIsLoading(false);
   };
 
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validation = authSchema.safeParse({ email, password });
-    if (!validation.success) {
-      toast({ title: 'Validation Error', description: validation.error.errors[0].message, variant: 'destructive' });
-      return;
-    }
-
-    setIsLoading(true);
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { emailRedirectTo: window.location.origin },
-    });
-
-    if (error) {
-      toast({ title: 'Signup Failed', description: error.message, variant: 'destructive' });
-      setIsLoading(false);
-      return;
-    }
-
-    setSignupEmail(email);
-    setSignupStep('otp');
-    toast({ title: 'OTP Sent!', description: 'Check your email for the verification code.' });
-    setIsLoading(false);
-  };
-
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (otpCode.length !== 6) {
-      toast({ title: 'Error', description: 'Please enter the 6-digit code.', variant: 'destructive' });
-      return;
-    }
-
-    setIsLoading(true);
-    const { error } = await supabase.auth.verifyOtp({
-      email: signupEmail,
-      token: otpCode,
-      type: 'signup',
-    });
-
-    if (error) {
-      toast({ title: 'Verification Failed', description: error.message, variant: 'destructive' });
-      setIsLoading(false);
-      return;
-    }
-
-    toast({ title: 'Account verified!', description: 'You are now logged in.' });
-    navigate(from, { replace: true });
-    setIsLoading(false);
-  };
-
   const handleForgotPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!forgotEmail) {
