@@ -6,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Shield } from 'lucide-react';
 import { z } from 'zod';
@@ -21,14 +19,8 @@ export default function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('login');
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
-  
-  // OTP signup state
-  const [signupStep, setSignupStep] = useState<'form' | 'otp'>('form');
-  const [otpCode, setOtpCode] = useState('');
-  const [signupEmail, setSignupEmail] = useState('');
 
   const { signIn } = useAuth();
   const navigate = useNavigate();
