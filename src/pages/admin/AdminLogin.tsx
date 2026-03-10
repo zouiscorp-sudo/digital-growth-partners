@@ -71,17 +71,6 @@ export default function AdminLogin() {
     setIsLoading(false);
   };
 
-  const handleResendOtp = async () => {
-    setIsLoading(true);
-    const { error } = await supabase.auth.resend({ type: 'signup', email: signupEmail });
-    if (error) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
-    } else {
-      toast({ title: 'OTP Resent!', description: 'Check your email for the new code.' });
-    }
-    setIsLoading(false);
-  };
-
   if (showForgotPassword) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background p-4">
