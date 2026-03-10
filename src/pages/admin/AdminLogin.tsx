@@ -6,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Shield } from 'lucide-react';
 import { z } from 'zod';
@@ -21,14 +19,8 @@ export default function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('login');
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
-  
-  // OTP signup state
-  const [signupStep, setSignupStep] = useState<'form' | 'otp'>('form');
-  const [otpCode, setOtpCode] = useState('');
-  const [signupEmail, setSignupEmail] = useState('');
 
   const { signIn } = useAuth();
   const navigate = useNavigate();
@@ -58,58 +50,6 @@ export default function AdminLogin() {
     setIsLoading(false);
   };
 
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validation = authSchema.safeParse({ email, password });
-    if (!validation.success) {
-      toast({ title: 'Validation Error', description: validation.error.errors[0].message, variant: 'destructive' });
-      return;
-    }
-
-    setIsLoading(true);
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { emailRedirectTo: window.location.origin },
-    });
-
-    if (error) {
-      toast({ title: 'Signup Failed', description: error.message, variant: 'destructive' });
-      setIsLoading(false);
-      return;
-    }
-
-    setSignupEmail(email);
-    setSignupStep('otp');
-    toast({ title: 'OTP Sent!', description: 'Check your email for the verification code.' });
-    setIsLoading(false);
-  };
-
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (otpCode.length !== 6) {
-      toast({ title: 'Error', description: 'Please enter the 6-digit code.', variant: 'destructive' });
-      return;
-    }
-
-    setIsLoading(true);
-    const { error } = await supabase.auth.verifyOtp({
-      email: signupEmail,
-      token: otpCode,
-      type: 'signup',
-    });
-
-    if (error) {
-      toast({ title: 'Verification Failed', description: error.message, variant: 'destructive' });
-      setIsLoading(false);
-      return;
-    }
-
-    toast({ title: 'Account verified!', description: 'You are now logged in.' });
-    navigate(from, { replace: true });
-    setIsLoading(false);
-  };
-
   const handleForgotPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!forgotEmail) {
@@ -127,17 +67,6 @@ export default function AdminLogin() {
     } else {
       toast({ title: 'Email Sent!', description: 'Check your email for the password reset link.' });
       setShowForgotPassword(false);
-    }
-    setIsLoading(false);
-  };
-
-  const handleResendOtp = async () => {
-    setIsLoading(true);
-    const { error } = await supabase.auth.resend({ type: 'signup', email: signupEmail });
-    if (error) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
-    } else {
-      toast({ title: 'OTP Resent!', description: 'Check your email for the new code.' });
     }
     setIsLoading(false);
   };
@@ -188,89 +117,25 @@ export default function AdminLogin() {
             <Shield className="h-6 w-6 text-primary" />
           </div>
           <CardTitle className="text-2xl">Admin Portal</CardTitle>
-          <CardDescription>
-            {activeTab === 'login'
-              ? 'Enter your credentials to access the dashboard'
-              : signupStep === 'otp'
-                ? 'Enter the verification code sent to your email'
-                : 'Create your admin account'
-            }
-          </CardDescription>
+          <CardDescription>Enter your credentials to access the dashboard</CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs value={activeTab} onValueChange={(v) => { setActiveTab(v); setSignupStep('form'); setOtpCode(''); }}>
-            <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="login">Login</TabsTrigger>
-              <TabsTrigger value="signup">Sign Up</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="login">
-              <form onSubmit={handleLogin} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="login-email">Email</Label>
-                  <Input id="login-email" type="email" placeholder="admin@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="login-password">Password</Label>
-                  <Input id="login-password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
-                </div>
-                <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Signing in...</> : 'Sign In'}
-                </Button>
-                <Button type="button" variant="link" className="w-full text-sm text-muted-foreground" onClick={() => setShowForgotPassword(true)}>
-                  Forgot your password?
-                </Button>
-              </form>
-            </TabsContent>
-
-            <TabsContent value="signup">
-              {signupStep === 'form' ? (
-                <form onSubmit={handleSignup} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-email">Email</Label>
-                    <Input id="signup-email" type="email" placeholder="admin@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-password">Password</Label>
-                    <Input id="signup-password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="new-password" />
-                  </div>
-                  <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Creating account...</> : 'Create Account'}
-                  </Button>
-                  <p className="text-xs text-center text-muted-foreground">
-                    A verification code will be sent to your email.
-                  </p>
-                </form>
-              ) : (
-                <form onSubmit={handleVerifyOtp} className="space-y-4">
-                  <p className="text-sm text-center text-muted-foreground mb-2">
-                    Code sent to <span className="font-medium text-foreground">{signupEmail}</span>
-                  </p>
-                  <div className="flex justify-center">
-                    <InputOTP maxLength={6} value={otpCode} onChange={setOtpCode}>
-                      <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
-                      </InputOTPGroup>
-                    </InputOTP>
-                  </div>
-                  <Button type="submit" className="w-full" disabled={isLoading || otpCode.length !== 6}>
-                    {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Verifying...</> : 'Verify & Sign In'}
-                  </Button>
-                  <Button type="button" variant="ghost" className="w-full text-sm" onClick={handleResendOtp} disabled={isLoading}>
-                    Resend Code
-                  </Button>
-                  <Button type="button" variant="link" className="w-full text-sm text-muted-foreground" onClick={() => { setSignupStep('form'); setOtpCode(''); }}>
-                    ← Back
-                  </Button>
-                </form>
-              )}
-            </TabsContent>
-          </Tabs>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="login-email">Email</Label>
+              <Input id="login-email" type="email" placeholder="admin@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="login-password">Password</Label>
+              <Input id="login-password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
+            </div>
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Signing in...</> : 'Sign In'}
+            </Button>
+            <Button type="button" variant="link" className="w-full text-sm text-muted-foreground" onClick={() => setShowForgotPassword(true)}>
+              Forgot your password?
+            </Button>
+          </form>
         </CardContent>
       </Card>
     </div>
